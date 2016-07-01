@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A416CF4E7B277132A1B08B6 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A416762E01C9003B3A710B6 /* Cell.swift */; };
 		83183E821D21CA7B00A44C1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183E811D21CA7B00A44C1E /* AppDelegate.swift */; };
 		83183E841D21CA7B00A44C1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183E831D21CA7B00A44C1E /* ViewController.swift */; };
 		83183E871D21CA7B00A44C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83183E851D21CA7B00A44C1E /* Main.storyboard */; };
@@ -14,6 +15,11 @@
 		83183E8C1D21CA7B00A44C1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83183E8A1D21CA7B00A44C1E /* LaunchScreen.storyboard */; };
 		83183E971D21CA7B00A44C1E /* BnCWaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183E961D21CA7B00A44C1E /* BnCWaterTests.swift */; };
 		83183EA21D21CA7B00A44C1E /* BnCWaterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183EA11D21CA7B00A44C1E /* BnCWaterUITests.swift */; };
+		8371F3011D268B6700EA457C /* Walker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3001D268B6700EA457C /* Walker.swift */; };
+		8371F3031D268E6000EA457C /* WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3021D268E6000EA457C /* WalkerTests.swift */; };
+		83B4784F1D23F04000569CF7 /* BoundlessMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4784E1D23F04000569CF7 /* BoundlessMatrix.swift */; };
+		83B478511D23F0BE00569CF7 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B478501D23F0BE00569CF7 /* Dimensions.swift */; };
+		83B478531D2401F000569CF7 /* BoundlessMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A416762E01C9003B3A710B6 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		83183E7E1D21CA7B00A44C1E /* BnCWater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BnCWater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83183E811D21CA7B00A44C1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83183E831D21CA7B00A44C1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +54,11 @@
 		83183E9D1D21CA7B00A44C1E /* BnCWaterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BnCWaterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83183EA11D21CA7B00A44C1E /* BnCWaterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BnCWaterUITests.swift; sourceTree = "<group>"; };
 		83183EA31D21CA7B00A44C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8371F3001D268B6700EA457C /* Walker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walker.swift; sourceTree = "<group>"; };
+		8371F3021D268E6000EA457C /* WalkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerTests.swift; sourceTree = "<group>"; };
+		83B4784E1D23F04000569CF7 /* BoundlessMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundlessMatrix.swift; sourceTree = "<group>"; };
+		83B478501D23F0BE00569CF7 /* Dimensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundlessMatrixTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +115,10 @@
 				83183E881D21CA7B00A44C1E /* Assets.xcassets */,
 				83183E8A1D21CA7B00A44C1E /* LaunchScreen.storyboard */,
 				83183E8D1D21CA7B00A44C1E /* Info.plist */,
+				83B4784E1D23F04000569CF7 /* BoundlessMatrix.swift */,
+				83B478501D23F0BE00569CF7 /* Dimensions.swift */,
+				5A416762E01C9003B3A710B6 /* Cell.swift */,
+				8371F3001D268B6700EA457C /* Walker.swift */,
 			);
 			path = BnCWater;
 			sourceTree = "<group>";
@@ -112,6 +128,8 @@
 			children = (
 				83183E961D21CA7B00A44C1E /* BnCWaterTests.swift */,
 				83183E981D21CA7B00A44C1E /* Info.plist */,
+				83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */,
+				8371F3021D268E6000EA457C /* WalkerTests.swift */,
 			);
 			path = BnCWaterTests;
 			sourceTree = "<group>";
@@ -193,6 +211,7 @@
 				TargetAttributes = {
 					83183E7D1D21CA7B00A44C1E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 98J5SQ7T33;
 					};
 					83183E911D21CA7B00A44C1E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -256,8 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B478511D23F0BE00569CF7 /* Dimensions.swift in Sources */,
+				8371F3011D268B6700EA457C /* Walker.swift in Sources */,
+				83B4784F1D23F04000569CF7 /* BoundlessMatrix.swift in Sources */,
 				83183E841D21CA7B00A44C1E /* ViewController.swift in Sources */,
 				83183E821D21CA7B00A44C1E /* AppDelegate.swift in Sources */,
+				5A416CF4E7B277132A1B08B6 /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B478531D2401F000569CF7 /* BoundlessMatrixTests.swift in Sources */,
+				8371F3031D268E6000EA457C /* WalkerTests.swift in Sources */,
 				83183E971D21CA7B00A44C1E /* BnCWaterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,10 +426,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BnCWater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Brick-and-Cheese-Co.BnCWater";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -412,10 +440,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = BnCWater/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Brick-and-Cheese-Co.BnCWater";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -484,6 +515,7 @@
 				83183EA81D21CA7B00A44C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83183EA91D21CA7B00A44C1E /* Build configuration list for PBXNativeTarget "BnCWaterTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +524,7 @@
 				83183EAB1D21CA7B00A44C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83183EAC1D21CA7B00A44C1E /* Build configuration list for PBXNativeTarget "BnCWaterUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +533,7 @@
 				83183EAE1D21CA7B00A44C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -21,4 +21,11 @@ class CellTests: XCTestCase {
     func testToCartesian() {
         XCTAssertEqual(Cell(row: 4, column: 5, value: 9).toCartesian(), Cartesian(y: 5, x: 4))
     }
+
+    func testMostPassive() {
+        let strong = Cell(row: 4, column: 5, value: 9)
+        let middlin = Cell(row: 4, column: 5, value: 3)
+        let weak = Cell(row: 4, column: 5, value: 1)
+        XCTAssertEqual(Cell.mostPassive([strong, weak, middlin]), weak)
+    }
 }

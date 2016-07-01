@@ -13,6 +13,16 @@ struct Cell {
     func toCartesian() -> Cartesian {
         return Cartesian(y: column, x: row)
     }
+
+    static func mostPassive(cells: [Cell]) -> Cell {
+
+        var sorted = cells.sort{ $0.value < $1.value }
+        return sorted[0]
+
+        // return cells.count > 1 ? cells.sort{ $0.value > $1.value }!.first : Cell(row: 0, column: 0, value: 0)
+
+
+    }
 }
 
 extension Cell: Equatable {}

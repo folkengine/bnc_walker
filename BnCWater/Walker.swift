@@ -9,10 +9,7 @@
 import Foundation
 
 /// The current "brute force" version of the class seems like a dead end, but maybe isn't.
-/// 
-/// I've been working with it in a playground.
 ///
-/// TODO: Add var value field to Cell struct to avoid tuple hell
 class Walker {
     let matrix: BoundlessMatrix
     

@@ -17,4 +17,8 @@ class CellTests: XCTestCase {
         XCTAssertTrue(Cell(row: 4, column: 5, value: 9) == Cell(row: 4, column: 5, value: 9))
         XCTAssertFalse(Cell(row: 4, column: 5, value: 9) == Cell(row: 4, column: 5, value: 3))
     }
+
+    func testToCartesian() {
+        XCTAssertEqual(Cell(row: 4, column: 5, value: 9).toCartesian(), Cartesian(y: 5, x: 4))
+    }
 }

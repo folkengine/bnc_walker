@@ -16,23 +16,23 @@ import Foundation
 class Walker {
     let matrix: BoundlessMatrix
     
-    var stuff:[[(cell: Cartesian, value: Int)]] = [[]]
+    var stuff:[[Cell]] = [[]]
     
     init(matrix: BoundlessMatrix) {
         self.matrix = matrix
     }
     
-    func step(cell: Cartesian, cells: [(cell: Cartesian, value: Int)]) {
+    func step(xy: Cartesian, cells: [Cell]) {
         var r = cells
-        let v = (cell: cell, value: matrix.retrieveCellValue(cell))
+        let v = matrix.retrieveCell(xy)
         r.append(v)
-        if (matrix.isFinalColumm(cell)) {
+        if (matrix.isFinalColumm(xy)) {
             stuff.append(r)
             return
         }
-        step(matrix.leftOfCell(cell), cells: r)
-        step(matrix.centerOfCell(cell), cells: r)
-        step(matrix.rightOfCell(cell), cells: r)
+        step(matrix.leftOfCell(xy), cells: r)
+        step(matrix.centerOfCell(xy), cells: r)
+        step(matrix.rightOfCell(xy), cells: r)
         
         return
     }

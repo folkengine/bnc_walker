@@ -11,6 +11,10 @@ import Foundation
 struct Cartesian {
     let y: Int
     let x: Int
+
+    func toCell(value: Int) -> Cell {
+        return Cell(row: x, column: y, value: value)
+    }
 }
 
 extension Cartesian: Equatable {}

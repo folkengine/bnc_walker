@@ -16,8 +16,8 @@ class BoundlessMatrix : CustomStringConvertible {
         self.matrix = matrix
     }
 
-    func retrieveCellValue(cell: Cartesian) -> Int {
-        return matrix[cell.y - 1][cell.x - 1]
+    func retrieveCell(xy: Cartesian) -> Cell {
+        return xy.toCell(matrix[xy.y - 1][xy.x - 1])
     }
 
     func columnsCount() -> Int {
@@ -28,22 +28,22 @@ class BoundlessMatrix : CustomStringConvertible {
         return matrix.count
     }
 
-    func isFinalColumm(cell: Cartesian) -> Bool {
-        return (cell.x == columnsCount())
+    func isFinalColumm(xy: Cartesian) -> Bool {
+        return (xy.x == columnsCount())
     }
 
-    func leftOfCell(cell: Cartesian) -> Cartesian {
-        let row = cell.y == 1 ? rowsCount() : cell.y - 1
-        return Cartesian(y: row, x: cell.x + 1)
+    func leftOfCell(xy: Cartesian) -> Cartesian {
+        let row = xy.y == 1 ? rowsCount() : xy.y - 1
+        return Cartesian(y: row, x: xy.x + 1)
     }
 
-    func centerOfCell(cell: Cartesian) -> Cartesian {
-        return Cartesian(y: cell.y, x: cell.x + 1)
+    func centerOfCell(xy: Cartesian) -> Cartesian {
+        return Cartesian(y: xy.y, x: xy.x + 1)
     }
 
-    func rightOfCell(cell: Cartesian) -> Cartesian {
-        let row = cell.y == rowsCount() ? 1 : cell.y + 1
-        return Cartesian(y: row, x: cell.x + 1)
+    func rightOfCell(xy: Cartesian) -> Cartesian {
+        let row = xy.y == rowsCount() ? 1 : xy.y + 1
+        return Cartesian(y: row, x: xy.x + 1)
     }
 
     var description: String {

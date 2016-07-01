@@ -29,8 +29,8 @@ class BoundlessMatrixTests: XCTestCase {
     }
 
     func testRetrieveCellValue() {
-        XCTAssertEqual(subject.retrieveCellValue(Cartesian(y: 1, x: 5)), 2)
-        XCTAssertEqual(subject.retrieveCellValue(Cartesian(y: 2, x: 4)), 4)
+        XCTAssertEqual(subject.retrieveCell(Cartesian(y: 1, x: 5)), Cell(row: 5, column: 1, value: 2))
+        XCTAssertEqual(subject.retrieveCell(Cartesian(y: 2, x: 4)), Cell(row: 4, column: 2, value: 4))
     }
 
     func testColumnsCount() {

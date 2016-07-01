@@ -9,6 +9,10 @@ struct Cell {
     let row: Int
     let column: Int
     let value: Int
+
+    func toCartesian() -> Cartesian {
+        return Cartesian(y: column, x: row)
+    }
 }
 
 extension Cell: Equatable {}

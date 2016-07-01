@@ -16,8 +16,8 @@ class BoundlessMatrix : CustomStringConvertible {
         self.matrix = matrix
     }
 
-    func retrieveCellValue(cell: Cell) -> Int {
-        return matrix[cell.row - 1][cell.column - 1]
+    func retrieveCellValue(cell: Cartesian) -> Int {
+        return matrix[cell.y - 1][cell.x - 1]
     }
 
     func columnsCount() -> Int {
@@ -28,22 +28,22 @@ class BoundlessMatrix : CustomStringConvertible {
         return matrix.count
     }
 
-    func isFinalColumm(cell: Cell) -> Bool {
-        return (cell.column == columnsCount())
+    func isFinalColumm(cell: Cartesian) -> Bool {
+        return (cell.x == columnsCount())
     }
 
-    func leftOfCell(cell: Cell) -> Cell {
-        let row = cell.row == 1 ? rowsCount() : cell.row - 1
-        return Cell(row: row, column: cell.column + 1)
+    func leftOfCell(cell: Cartesian) -> Cartesian {
+        let row = cell.y == 1 ? rowsCount() : cell.y - 1
+        return Cartesian(y: row, x: cell.x + 1)
     }
 
-    func centerOfCell(cell: Cell) -> Cell {
-        return Cell(row: cell.row, column: cell.column + 1)
+    func centerOfCell(cell: Cartesian) -> Cartesian {
+        return Cartesian(y: cell.y, x: cell.x + 1)
     }
 
-    func rightOfCell(cell: Cell) -> Cell {
-        let row = cell.row == rowsCount() ? 1 : cell.row + 1
-        return Cell(row: row, column: cell.column + 1)
+    func rightOfCell(cell: Cartesian) -> Cartesian {
+        let row = cell.y == rowsCount() ? 1 : cell.y + 1
+        return Cartesian(y: row, x: cell.x + 1)
     }
 
     var description: String {
@@ -55,10 +55,10 @@ class BoundlessMatrix : CustomStringConvertible {
     }
     
     /// Static factory method generating a instance with random values
-    class func factory(dimensions: Dimensions) -> BoundlessMatrix {
-        var arr = Array(count: dimensions.columns, repeatedValue: Array(count: dimensions.rows, repeatedValue: 0))
-        for i in 0...(dimensions.columns - 1) {
-            arr[i] = (0...dimensions.rows).map{_ in Int(arc4random_uniform(8) + 1)}
+    class func factory(dimensions: Cartesian) -> BoundlessMatrix {
+        var arr = Array(count: dimensions.x, repeatedValue: Array(count: dimensions.y, repeatedValue: 0))
+        for i in 0...(dimensions.x - 1) {
+            arr[i] = (0...dimensions.y).map{_ in Int(arc4random_uniform(8) + 1)}
         }
         return BoundlessMatrix(matrix: arr)
     }

@@ -16,13 +16,13 @@ import Foundation
 class Walker {
     let matrix: BoundlessMatrix
     
-    var stuff:[[(cell: Cell, value: Int)]] = [[]]
+    var stuff:[[(cell: Cartesian, value: Int)]] = [[]]
     
     init(matrix: BoundlessMatrix) {
         self.matrix = matrix
     }
     
-    func step(cell: Cell, cells: [(cell: Cell, value: Int)]) {
+    func step(cell: Cartesian, cells: [(cell: Cartesian, value: Int)]) {
         var r = cells
         let v = (cell: cell, value: matrix.retrieveCellValue(cell))
         r.append(v)
@@ -38,7 +38,7 @@ class Walker {
     }
     
     /// I would figure out how to use reduce if I had had more sleep. :-P
-    func sum(tupleRow: [(cell: Cell, value: Int)]) -> Int {
+    func sum(tupleRow: [(cell: Cartesian, value: Int)]) -> Int {
         var sum = 0;
         for c in tupleRow {
             sum += c.value

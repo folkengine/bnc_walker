@@ -17,8 +17,10 @@
 		83183EA21D21CA7B00A44C1E /* BnCWaterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183EA11D21CA7B00A44C1E /* BnCWaterUITests.swift */; };
 		8371F3011D268B6700EA457C /* Walker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3001D268B6700EA457C /* Walker.swift */; };
 		8371F3031D268E6000EA457C /* WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3021D268E6000EA457C /* WalkerTests.swift */; };
+		8371F3051D26B58D00EA457C /* CartesianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A41649C1C087BA2EFD4668D /* CartesianTests.swift */; };
+		8371F3071D26B5FF00EA457C /* CellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3061D26B5FF00EA457C /* CellTests.swift */; };
 		83B4784F1D23F04000569CF7 /* BoundlessMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B4784E1D23F04000569CF7 /* BoundlessMatrix.swift */; };
-		83B478511D23F0BE00569CF7 /* Dimensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B478501D23F0BE00569CF7 /* Dimensions.swift */; };
+		83B478511D23F0BE00569CF7 /* Cartesian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B478501D23F0BE00569CF7 /* Cartesian.swift */; };
 		83B478531D2401F000569CF7 /* BoundlessMatrixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A41649C1C087BA2EFD4668D /* CartesianTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartesianTests.swift; sourceTree = "<group>"; };
 		5A416762E01C9003B3A710B6 /* Cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		83183E7E1D21CA7B00A44C1E /* BnCWater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BnCWater.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83183E811D21CA7B00A44C1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,8 +59,9 @@
 		83183EA31D21CA7B00A44C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8371F3001D268B6700EA457C /* Walker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walker.swift; sourceTree = "<group>"; };
 		8371F3021D268E6000EA457C /* WalkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkerTests.swift; sourceTree = "<group>"; };
+		8371F3061D26B5FF00EA457C /* CellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellTests.swift; sourceTree = "<group>"; };
 		83B4784E1D23F04000569CF7 /* BoundlessMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundlessMatrix.swift; sourceTree = "<group>"; };
-		83B478501D23F0BE00569CF7 /* Dimensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dimensions.swift; sourceTree = "<group>"; };
+		83B478501D23F0BE00569CF7 /* Cartesian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cartesian.swift; sourceTree = "<group>"; };
 		83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundlessMatrixTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,7 +120,7 @@
 				83183E8A1D21CA7B00A44C1E /* LaunchScreen.storyboard */,
 				83183E8D1D21CA7B00A44C1E /* Info.plist */,
 				83B4784E1D23F04000569CF7 /* BoundlessMatrix.swift */,
-				83B478501D23F0BE00569CF7 /* Dimensions.swift */,
+				83B478501D23F0BE00569CF7 /* Cartesian.swift */,
 				5A416762E01C9003B3A710B6 /* Cell.swift */,
 				8371F3001D268B6700EA457C /* Walker.swift */,
 			);
@@ -130,6 +134,8 @@
 				83183E981D21CA7B00A44C1E /* Info.plist */,
 				83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */,
 				8371F3021D268E6000EA457C /* WalkerTests.swift */,
+				5A41649C1C087BA2EFD4668D /* CartesianTests.swift */,
+				8371F3061D26B5FF00EA457C /* CellTests.swift */,
 			);
 			path = BnCWaterTests;
 			sourceTree = "<group>";
@@ -275,7 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83B478511D23F0BE00569CF7 /* Dimensions.swift in Sources */,
+				83B478511D23F0BE00569CF7 /* Cartesian.swift in Sources */,
 				8371F3011D268B6700EA457C /* Walker.swift in Sources */,
 				83B4784F1D23F04000569CF7 /* BoundlessMatrix.swift in Sources */,
 				83183E841D21CA7B00A44C1E /* ViewController.swift in Sources */,
@@ -288,7 +294,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8371F3051D26B58D00EA457C /* CartesianTests.swift in Sources */,
 				83B478531D2401F000569CF7 /* BoundlessMatrixTests.swift in Sources */,
+				8371F3071D26B5FF00EA457C /* CellTests.swift in Sources */,
 				8371F3031D268E6000EA457C /* WalkerTests.swift in Sources */,
 				83183E971D21CA7B00A44C1E /* BnCWaterTests.swift in Sources */,
 			);

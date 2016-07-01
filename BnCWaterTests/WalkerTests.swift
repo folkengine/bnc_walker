@@ -21,8 +21,8 @@ class WalkerTests: XCTestCase {
             [5, 4, 3, 2, 1, 5]])
 
     func testStep() {
-        var enter = Walker(matrix: matrix)
-        enter.step(Cell(row: 1, column: 1), cells: [])
+        let enter = Walker(matrix: matrix)
+        enter.step(Cartesian(y: 1, x: 1), cells: [])
         print(enter.stuff)
     }
 }

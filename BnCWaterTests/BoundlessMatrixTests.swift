@@ -29,8 +29,8 @@ class BoundlessMatrixTests: XCTestCase {
     }
 
     func testRetrieveCellValue() {
-        XCTAssertEqual(subject.retrieveCellValue(Cell(row: 1, column: 5)), 2)
-        XCTAssertEqual(subject.retrieveCellValue(Cell(row: 2, column: 4)), 4)
+        XCTAssertEqual(subject.retrieveCellValue(Cartesian(y: 1, x: 5)), 2)
+        XCTAssertEqual(subject.retrieveCellValue(Cartesian(y: 2, x: 4)), 4)
     }
 
     func testColumnsCount() {
@@ -42,28 +42,28 @@ class BoundlessMatrixTests: XCTestCase {
     }
 
     func testIsFinalColumm() {
-        XCTAssertTrue(subject.isFinalColumm(Cell(row: 1, column: 6)))
-        XCTAssertFalse(subject.isFinalColumm(Cell(row: 1, column: 5)))
+        XCTAssertTrue(subject.isFinalColumm(Cartesian(y: 1, x: 6)))
+        XCTAssertFalse(subject.isFinalColumm(Cartesian(y: 1, x: 5)))
     }
 
     func testLeftOfCell() {
-        XCTAssertEqual(subject.leftOfCell(Cell(row: 1, column: 2)), Cell(row: 5, column: 3),
+        XCTAssertEqual(subject.leftOfCell(Cartesian(y: 1, x: 2)), Cartesian(y: 5, x: 3),
                 "Last row should wrap to the first.")
 
-        XCTAssertEqual(subject.leftOfCell(Cell(row: 2, column: 2)), Cell(row: 1, column: 3),
+        XCTAssertEqual(subject.leftOfCell(Cartesian(y: 2, x: 2)), Cartesian(y: 1, x: 3),
                 "Should be one over and one up.")
     }
 
     func testCenterOfCell() {
-        XCTAssertEqual(subject.centerOfCell(Cell(row: 1, column: 2)), Cell(row: 1, column: 3),
+        XCTAssertEqual(subject.centerOfCell(Cartesian(y: 1, x: 2)), Cartesian(y: 1, x: 3),
                 "Should be one over.")
     }
 
     func testRightOfCell() {
-        XCTAssertEqual(subject.rightOfCell(Cell(row: 5, column: 2)), Cell(row: 1, column: 3),
+        XCTAssertEqual(subject.rightOfCell(Cartesian(y: 5, x: 2)), Cartesian(y: 1, x: 3),
                 "First row should wrap to the last.")
 
-        XCTAssertEqual(subject.rightOfCell(Cell(row: 2, column: 2)), Cell(row: 3, column: 3),
+        XCTAssertEqual(subject.rightOfCell(Cartesian(y: 2, x: 2)), Cartesian(y: 3, x: 3),
                 "Should be one over and one down.")
     }
 }

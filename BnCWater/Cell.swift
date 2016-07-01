@@ -8,9 +8,10 @@ import Foundation
 struct Cell {
     let row: Int
     let column: Int
+    let value: Int
 }
 
 extension Cell: Equatable {}
 func ==(lhs: Cell, rhs: Cell) -> Bool {
-    return lhs.row == rhs.row && lhs.column == rhs.column
+    return lhs.row == rhs.row && lhs.column == rhs.column && lhs.value == rhs.value
 }

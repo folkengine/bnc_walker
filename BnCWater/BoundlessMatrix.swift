@@ -32,18 +32,18 @@ class BoundlessMatrix : CustomStringConvertible {
         return (xy.x == columnsCount())
     }
 
-    func leftOfCell(xy: Cartesian) -> Cartesian {
+    func leftOfCell(xy: Cartesian) -> Cell {
         let row = xy.y == 1 ? rowsCount() : xy.y - 1
-        return Cartesian(y: row, x: xy.x + 1)
+        return retrieveCell(Cartesian(y: row, x: xy.x + 1))
     }
 
-    func centerOfCell(xy: Cartesian) -> Cartesian {
-        return Cartesian(y: xy.y, x: xy.x + 1)
+    func centerOfCell(xy: Cartesian) -> Cell {
+        return retrieveCell(Cartesian(y: xy.y, x: xy.x + 1))
     }
 
-    func rightOfCell(xy: Cartesian) -> Cartesian {
+    func rightOfCell(xy: Cartesian) -> Cell {
         let row = xy.y == rowsCount() ? 1 : xy.y + 1
-        return Cartesian(y: row, x: xy.x + 1)
+        return retrieveCell(Cartesian(y: row, x: xy.x + 1))
     }
 
     var description: String {

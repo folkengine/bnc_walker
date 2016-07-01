@@ -30,9 +30,9 @@ class Walker {
             stuff.append(r)
             return
         }
-        step(matrix.leftOfCell(xy), cells: r)
-        step(matrix.centerOfCell(xy), cells: r)
-        step(matrix.rightOfCell(xy), cells: r)
+        step(matrix.leftOfCell(xy).toCartesian(), cells: r)
+        step(matrix.centerOfCell(xy).toCartesian(), cells: r)
+        step(matrix.rightOfCell(xy).toCartesian(), cells: r)
         
         return
     }

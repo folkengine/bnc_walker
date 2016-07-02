@@ -20,8 +20,8 @@ struct Cell {
         return sorted[0]
     }
     
-    static func sumOfValues(cells: [Cell]) -> Int {
-        return cells.reduce(0, combine: {$0 + $1.value})
+    static func sumOfValues(cells: [Cell]) throws -> Int {
+        return try cells.reduce(0, combine: {$0 + $1.value})
     }
 }
 

@@ -28,4 +28,12 @@ class CellTests: XCTestCase {
         let weak = Cell(row: 4, column: 5, value: 1)
         XCTAssertEqual(Cell.mostPassive([strong, weak, middlin]), weak)
     }
+    
+    func testSumOfValues() {
+        let strong = Cell(row: 4, column: 5, value: 9)
+        let middlin = Cell(row: 4, column: 5, value: 3)
+        let weak = Cell(row: 4, column: 5, value: 1)
+        XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin]), 13)
+        XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin, weak]), 14)
+    }
 }

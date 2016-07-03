@@ -34,15 +34,27 @@ class Walker {
     }
 
     func addBreadcrumb(cell: Cell) {
+        addBreadcrumb(cell, trail: [cell])
+    }
 
+    func addBreadcrumb(cell: Cell, trail: [Cell]) {
+        breadcrumb[cell.toCartesian()] = cell.toCartesian().toCell(Cell.sumOfValues(trail)) // 8-)
+    }
+
+    func hasBreadcrumb(xy: Cartesian) -> Bool {
+        return (breadcrumb[xy] != nil)
+    }
+
+    func hasBreadcrumb(cell: Cell) -> Bool {
+        return hasBreadcrumb(cell.toCartesian())
     }
 
     func isWorthyOfContinuing(cell: Cell, trail: [Cell]) -> Bool {
         let xy = cell.toCartesian()
-        if ((breadcrumb[xy] != nil) && (breadcrumb[xy]!.value < cell.value)) {
+        if (hasBreadcrumb(cell) && (breadcrumb[xy]!.value < cell.value)) {
             return false
         }
-        breadcrumb[xy] = cell
+        addBreadcrumb(cell)
         return true
     }
     
@@ -57,8 +69,6 @@ class Walker {
         step(matrix.leftOfCell(xy).toCartesian(), cells: candidate)
         step(matrix.centerOfCell(xy).toCartesian(), cells: candidate)
         step(matrix.rightOfCell(xy).toCartesian(), cells: candidate)
-        
-        return
     }
     
     func pathOfLeastResistance() -> [Int] {

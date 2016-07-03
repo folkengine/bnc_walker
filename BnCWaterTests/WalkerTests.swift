@@ -30,6 +30,11 @@ class WalkerTests: XCTestCase {
         let walker = Walker(matrix: matrix)
         let strong = Cell(row: 4, column: 5, value: 9)
         let middlin = Cell(row: 4, column: 5, value: 3)
-        walker.breadcrumb[strong.toCartesian()] = strong
+        let weak = Cell(row: 4, column: 4, value: 1)
+        walker.addBreadcrumb(strong)
+
+        XCTAssertTrue(walker.hasBreadcrumb(middlin))
+        XCTAssertTrue(walker.hasBreadcrumb(middlin.toCartesian()))
+        XCTAssertFalse(walker.hasBreadcrumb(weak))
     }
 }

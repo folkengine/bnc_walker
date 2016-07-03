@@ -25,4 +25,11 @@ class WalkerTests: XCTestCase {
         enter.step(Cartesian(x: 1, y: 1), cells: [])
         print(enter.bestWalk)
     }
+
+    func testIsWorthyOfContinuing() {
+        let walker = Walker(matrix: matrix)
+        let strong = Cell(row: 4, column: 5, value: 9)
+        let middlin = Cell(row: 4, column: 5, value: 3)
+        walker.breadcrumb[strong.toCartesian()] = strong
+    }
 }

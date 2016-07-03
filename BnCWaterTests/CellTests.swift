@@ -36,4 +36,9 @@ class CellTests: XCTestCase {
         XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin]), 13)
         XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin, weak]), 14)
     }
+
+    func testHashValue() {
+        XCTAssertEqual(Cell(row: 4, column: 5, value: 9).hashValue, Cell(row: 4, column: 5, value: 9).hashValue)
+        XCTAssertNotEqual(Cell(row: 4, column: 5, value: 9).hashValue, Cell(row: 5, column: 4, value: 9).hashValue)
+    }
 }

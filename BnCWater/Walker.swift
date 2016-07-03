@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The current "brute force" version of the class seems like a dead end, but maybe isn't.
+/// Modified brute force that includes a breadcrumb to reduce repeating paths.
 ///
 class Walker {
     let matrix: BoundlessMatrix
@@ -17,21 +17,33 @@ class Walker {
 
     var bestWalk: [Cell] = []
     var bestWalkSum: Int = 0
+    var breadcrumb: [Cartesian:Cell] = [:]
     
     init(matrix: BoundlessMatrix) {
         self.matrix = matrix
     }
 
     func submitCandidate(candidate: [Cell]) {
- 
-            let candidateSum = Cell.sumOfValues(candidate)
+        let candidateSum = Cell.sumOfValues(candidate)
 
-            if ((bestWalkSum == 0) || (candidateSum < bestWalkSum)) {
-                NSLog("New best walk: \(candidateSum) \(candidate) ")
-                bestWalk = candidate
-                bestWalkSum = candidateSum
-            }
-  
+        if ((bestWalkSum == 0) || (candidateSum < bestWalkSum)) {
+            NSLog("New best walk: \(candidateSum) \(candidate) ")
+            bestWalk = candidate
+            bestWalkSum = candidateSum
+        }
+    }
+
+    func addBreadcrumb(cell: Cell) {
+
+    }
+
+    func isWorthyOfContinuing(cell: Cell, trail: [Cell]) -> Bool {
+        let xy = cell.toCartesian()
+        if ((breadcrumb[xy] != nil) && (breadcrumb[xy]!.value < cell.value)) {
+            return false
+        }
+        breadcrumb[xy] = cell
+        return true
     }
     
     func step(xy: Cartesian, cells: [Cell]) {

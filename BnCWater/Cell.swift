@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct Cell {
+struct Cell: Hashable {
     let row: Int
     let column: Int
     let value: Int
@@ -22,9 +22,15 @@ struct Cell {
     static func sumOfValues(cells: [Cell]) -> Int {
         return cells.reduce(0, combine: {$0 + $1.value})
     }
+
+    var hashValue: Int {
+        var result: Int = (row ^ (row >> 32))
+        result = 31 * result + (column ^ (column >> 32))
+        result = 31 * result + (value ^ (value >> 32))
+        return result
+    }
 }
 
-extension Cell: Equatable {}
 func ==(lhs: Cell, rhs: Cell) -> Bool {
     return lhs.row == rhs.row && lhs.column == rhs.column && lhs.value == rhs.value
 }

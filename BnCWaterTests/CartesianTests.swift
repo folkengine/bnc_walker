@@ -11,12 +11,12 @@ import XCTest
 class CartesianTests: XCTestCase {
 
     func testCartesianEquality() {
-        XCTAssertTrue(Cartesian(y: 4, x: 5) == Cartesian(y: 4, x: 5))
-        XCTAssertFalse(Cartesian(y: 4, x: 5) == Cartesian(y: 3, x: 5))
+        XCTAssertTrue(Cartesian(x: 5, y: 4) == Cartesian(x: 5, y: 4))
+        XCTAssertFalse(Cartesian(x: 5, y: 4) == Cartesian(x: 5, y: 3))
     }
 
     func testToCell() {
-        XCTAssertEqual(Cartesian(y: 1, x: 2).toCell(3), Cell(row: 2, column: 1, value: 3))
+        XCTAssertEqual(Cartesian(x: 2, y: 1).toCell(3), Cell(row: 2, column: 1, value: 3))
     }
 
 }

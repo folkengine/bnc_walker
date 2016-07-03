@@ -29,8 +29,8 @@ class BoundlessMatrixTests: XCTestCase {
     }
 
     func testRetrieveCellValue() {
-        XCTAssertEqual(subject.retrieveCell(Cartesian(y: 1, x: 5)), Cell(row: 5, column: 1, value: 2))
-        XCTAssertEqual(subject.retrieveCell(Cartesian(y: 2, x: 4)), Cell(row: 4, column: 2, value: 4))
+        XCTAssertEqual(subject.retrieveCell(Cartesian(x: 5, y: 1)), Cell(row: 5, column: 1, value: 2))
+        XCTAssertEqual(subject.retrieveCell(Cartesian(x: 4, y: 2)), Cell(row: 4, column: 2, value: 4))
     }
 
     func testColumnsCount() {
@@ -42,28 +42,28 @@ class BoundlessMatrixTests: XCTestCase {
     }
 
     func testIsFinalColumm() {
-        XCTAssertTrue(subject.isFinalColumm(Cartesian(y: 1, x: 6)))
-        XCTAssertFalse(subject.isFinalColumm(Cartesian(y: 1, x: 5)))
+        XCTAssertTrue(subject.isFinalColumm(Cartesian(x: 6, y: 1)))
+        XCTAssertFalse(subject.isFinalColumm(Cartesian(x: 5, y: 1)))
     }
 
     func testLeftOfCellMotion() {
-        XCTAssertEqual(subject.leftOfCell(Cartesian(y: 1, x: 2)).toCartesian(), Cartesian(y: 5, x: 3),
+        XCTAssertEqual(subject.leftOfCell(Cartesian(x: 2, y: 1)).toCartesian(), Cartesian(x: 3, y: 5),
                 "Last row should wrap to the first.")
 
-        XCTAssertEqual(subject.leftOfCell(Cartesian(y: 2, x: 2)).toCartesian(), Cartesian(y: 1, x: 3),
+        XCTAssertEqual(subject.leftOfCell(Cartesian(x: 2, y: 2)).toCartesian(), Cartesian(x: 3, y: 1),
                 "Should be one over and one up.")
     }
 
     func testCenterOfCellMotion() {
-        XCTAssertEqual(subject.centerOfCell(Cartesian(y: 1, x: 2)).toCartesian(), Cartesian(y: 1, x: 3),
+        XCTAssertEqual(subject.centerOfCell(Cartesian(x: 2, y: 1)).toCartesian(), Cartesian(x: 3, y: 1),
                 "Should be one over.")
     }
 
     func testRightOfCellMotion() {
-        XCTAssertEqual(subject.rightOfCell(Cartesian(y: 5, x: 2)).toCartesian(), Cartesian(y: 1, x: 3),
+        XCTAssertEqual(subject.rightOfCell(Cartesian(x: 2, y: 5)).toCartesian(), Cartesian(x: 3, y: 1),
                 "First row should wrap to the last.")
 
-        XCTAssertEqual(subject.rightOfCell(Cartesian(y: 2, x: 2)).toCartesian(), Cartesian(y: 3, x: 3),
+        XCTAssertEqual(subject.rightOfCell(Cartesian(x: 2, y: 2)).toCartesian(), Cartesian(x: 3, y: 3),
                 "Should be one over and one down.")
     }
 }

@@ -11,17 +11,16 @@ struct Cell {
     let value: Int
 
     func toCartesian() -> Cartesian {
-        return Cartesian(y: column, x: row)
+        return Cartesian(x: row, y: column)
     }
 
     static func mostPassive(cells: [Cell]) -> Cell {
-
         var sorted = cells.sort{ $0.value < $1.value }
         return sorted[0]
     }
-    
-    static func sumOfValues(cells: [Cell]) throws -> Int {
-        return try cells.reduce(0, combine: {$0 + $1.value})
+
+    static func sumOfValues(cells: [Cell]) -> Int {
+        return cells.reduce(0, combine: {$0 + $1.value})
     }
 }
 

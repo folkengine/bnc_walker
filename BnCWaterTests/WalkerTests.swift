@@ -22,7 +22,7 @@ class WalkerTests: XCTestCase {
 
     func testStep() {
         let enter = Walker(matrix: matrix)
-        enter.step(Cartesian(y: 1, x: 1), cells: [])
-        print(enter.stuff)
+        enter.step(Cartesian(x: 1, y: 1), cells: [])
+        print(enter.bestWalk)
     }
 }

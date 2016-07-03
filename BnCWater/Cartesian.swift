@@ -8,16 +8,19 @@
 
 import Foundation
 
-struct Cartesian {
-    let y: Int
+struct Cartesian: Hashable {
     let x: Int
+    let y: Int
 
     func toCell(value: Int) -> Cell {
         return Cell(row: x, column: y, value: value)
     }
+
+    var hashValue: Int {
+        return (31 &* y.hashValue) &+ x.hashValue
+    }
 }
 
-extension Cartesian: Equatable {}
 func ==(lhs: Cartesian, rhs: Cartesian) -> Bool {
     return lhs.y == rhs.y && lhs.x == rhs.x
 }

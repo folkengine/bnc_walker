@@ -57,18 +57,21 @@ class Walker {
         addBreadcrumb(cell)
         return true
     }
-    
-    func step(xy: Cartesian, cells: [Cell]) {
+
+    func startStepping(xy: Cartesian) {
+        step(matrix.retrieveCell(xy), cells: [])
+    }
+
+    func step(cell: Cell, cells: [Cell]) {
         var candidate = cells
-        let currentCell = matrix.retrieveCell(xy)
-        candidate.append(currentCell)
-        if (matrix.isFinalColumm(xy)) {
+        candidate.append(cell)
+        if (matrix.isFinalColumn(cell.toCartesian())) {
             submitCandidate(candidate)
             return
         }
-        step(matrix.leftOfCell(xy).toCartesian(), cells: candidate)
-        step(matrix.centerOfCell(xy).toCartesian(), cells: candidate)
-        step(matrix.rightOfCell(xy).toCartesian(), cells: candidate)
+        step(matrix.leftOfCell(cell.toCartesian()), cells: candidate)
+        step(matrix.centerOfCell(cell.toCartesian()), cells: candidate)
+        step(matrix.rightOfCell(cell.toCartesian()), cells: candidate)
     }
     
     func pathOfLeastResistance() -> [Int] {

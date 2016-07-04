@@ -28,7 +28,7 @@ class BoundlessMatrix : CustomStringConvertible {
         return matrix.count
     }
 
-    func isFinalColumm(xy: Cartesian) -> Bool {
+    func isFinalColumn(xy: Cartesian) -> Bool {
         return (xy.x == columnsCount())
     }
 
@@ -40,6 +40,7 @@ class BoundlessMatrix : CustomStringConvertible {
     func centerOfCell(xy: Cartesian) -> Cell {
         return retrieveCell(Cartesian(x: xy.x + 1, y: xy.y))
     }
+
 
     func rightOfCell(xy: Cartesian) -> Cell {
         let row = xy.y == rowsCount() ? 1 : xy.y + 1

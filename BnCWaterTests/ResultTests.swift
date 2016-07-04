@@ -31,4 +31,8 @@ class ResultTests : XCTestCase {
         XCTAssertEqual(result.path, [Cell(column: 1, row: 5, value: 1), Cell(column: 2, row: 4, value: 1), Cell(column: 3, row: 3, value: 1), Cell(column: 4, row: 2, value: 1), Cell(column: 5, row: 1, value: 1), Cell(column: 6, row: 5, value: 1)])
     }
 
+    func testSuccessful() {
+        XCTAssertTrue(Result(threshold: 50, path: walker.bestWalk).successful)
+        XCTAssertFalse(Result(threshold: 2, path: walker.bestWalk).successful)
+    }
 }

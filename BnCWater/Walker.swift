@@ -25,7 +25,7 @@ class Walker {
         let candidateSum = Cell.sumOfValues(candidate)
 
         if ((bestWalkSum == 0) || (candidateSum < bestWalkSum)) {
-            NSLog("New best walk: \(candidateSum) \(candidate) ")
+            NSLog("New best walk: \(candidateSum) \(Walker.calculateWalk(candidate)) ")
             bestWalk = candidate
             bestWalkSum = candidateSum
         }
@@ -48,11 +48,11 @@ class Walker {
     }
 
     func isWorthyOfContinuing(cell: Cell, trail: [Cell]) -> Bool {
-        let xy = cell.toCartesian()
-        if (hasBreadcrumb(cell) && (breadcrumb[xy]!.value < cell.value)) {
+        if (hasBreadcrumb(cell) && (breadcrumb[cell.toCartesian()]!.value <= Cell.sumOfValues(trail))) {
+            // NSLog("Rejecting EX: \(breadcrumb[cell.toCartesian()]!.value) V: \(Cell.sumOfValues(trail)) \(trail)")
             return false
         }
-        addBreadcrumb(cell)
+        addBreadcrumb(cell, trail: trail)
         return true
     }
 
@@ -67,12 +67,29 @@ class Walker {
             submitCandidate(candidate)
             return
         }
-        step(matrix.leftOfCell(cell.toCartesian()), cells: candidate)
-        step(matrix.centerOfCell(cell.toCartesian()), cells: candidate)
-        step(matrix.rightOfCell(cell.toCartesian()), cells: candidate)
+
+        // TODO: Good candidates for a lambda
+        let left = matrix.leftOfCell(cell.toCartesian())
+        if (isWorthyOfContinuing(left, trail: candidate)) {
+            step(left, cells: candidate)
+        }
+
+        let center = matrix.centerOfCell(cell.toCartesian())
+        if (isWorthyOfContinuing(center, trail: candidate)) {
+            step(center, cells: candidate)
+        }
+
+        let right = matrix.rightOfCell(cell.toCartesian())
+        if (isWorthyOfContinuing(right, trail: candidate)) {
+            step(right, cells: candidate)
+        }
     }
     
     func pathOfLeastResistance() -> [Int] {
         return []
+    }
+
+    class func calculateWalk(trail: [Cell]) -> [Int] {
+        return trail.map({$0.row})
     }
 }

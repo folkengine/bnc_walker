@@ -31,17 +31,19 @@ class WalkerTests: XCTestCase {
     }
 
     func testStartStepping_shortest() {
-        protagonist.startStepping(Cartesian(x: 1, y: 6))
+        protagonist.startStepping(Cartesian(x: 6, y: 1))
         XCTAssertEqual(protagonist.bestWalk, [Cell(column: 6, row: 1, value: 1)])
     }
 
     func testStep() {
         protagonist.startStepping(Cartesian(x: 1, y: 1))
-        print(protagonist.bestWalk)
+
+        let walk = Walker.calculateWalk(protagonist.bestWalk)
+        XCTAssertEqual(walk, [1, 2, 3, 4, 5, 1])
+        print(walk)
     }
 
     func testAddBreadcrumb() {
-
         protagonist.addBreadcrumb(strong)
 
         XCTAssertTrue(protagonist.hasBreadcrumb(middlin))
@@ -53,6 +55,20 @@ class WalkerTests: XCTestCase {
     }
 
     func testIsWorthyOfContinuing() {
+        let best = Cell(column: 5, row: 4, value: 1)
+        protagonist.addBreadcrumb(middlin)
+        XCTAssertTrue(protagonist.hasBreadcrumb(middlin))
+        XCTAssertFalse(protagonist.isWorthyOfContinuing(strong, trail: [strong]))
+        XCTAssertTrue(protagonist.isWorthyOfContinuing(best, trail: [best]))
+        XCTAssertEqual(protagonist.breadcrumb[best.toCartesian()]!.value, 1)
+    }
 
+    func testCalculateWalk() {
+        XCTAssertEqual(
+                Walker.calculateWalk([
+                        Cell(column: 1, row: 1, value: 1),
+                        Cell(column: 2, row: 2, value: 1),
+                        Cell(column: 3, row: 3, value: 1)]),
+                [1, 2, 3])
     }
 }

@@ -19,10 +19,10 @@ class BoundlessMatrixTests: XCTestCase {
                                     [3, 2, 1, 5, 4, 3],
                                     [4, 3, 2, 1, 5, 4],
                                     [5, 4, 3, 2, 1, 5]])
-    
+
     func testRetrieveCellValue() {
-        XCTAssertEqual(protagonist.retrieveCell(Cartesian(x: 5, y: 1)), Cell(row: 5, column: 1, value: 2))
-        XCTAssertEqual(protagonist.retrieveCell(Cartesian(x: 4, y: 2)), Cell(row: 4, column: 2, value: 4))
+        XCTAssertEqual(protagonist.retrieveCell(Cartesian(x: 5, y: 1)), Cell(column: 5, row: 1, value: 2))
+        XCTAssertEqual(protagonist.retrieveCell(Cartesian(x: 4, y: 2)), Cell(column: 4, row: 2, value: 4))
     }
 
     func testColumnsCount() {

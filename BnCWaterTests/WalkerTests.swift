@@ -21,14 +21,18 @@ class WalkerTests: XCTestCase {
             [3, 2, 1, 5, 4, 3],
             [4, 3, 2, 1, 5, 4],
             [5, 4, 3, 2, 1, 5]])
-    let strong = Cell(row: 4, column: 5, value: 9)
-    let middlin = Cell(row: 4, column: 5, value: 3)
-    let weak = Cell(row: 4, column: 4, value: 1)
+    let strong = Cell(column: 5, row: 4, value: 9)
+    let middlin = Cell(column: 5, row: 4, value: 3)
+    let weak = Cell(column: 4, row: 4, value: 1)
 
     override func setUp() {
         super.setUp()
-
         protagonist = Walker(matrix: matrix)
+    }
+
+    func testStartStepping_shortest() {
+        protagonist.startStepping(Cartesian(x: 1, y: 6))
+        XCTAssertEqual(protagonist.bestWalk, [Cell(column: 6, row: 1, value: 1)])
     }
 
     func testStep() {

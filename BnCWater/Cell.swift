@@ -6,17 +6,20 @@
 import Foundation
 
 struct Cell: Hashable {
-    let row: Int
     let column: Int
+    let row: Int
     let value: Int
 
     func toCartesian() -> Cartesian {
-        return Cartesian(x: row, y: column)
+        return Cartesian(x: column, y: row)
+    }
+
+    static func sort(cells: [Cell]) -> [Cell] {
+        return cells.sort{ $0.value < $1.value }
     }
 
     static func mostPassive(cells: [Cell]) -> Cell {
-        var sorted = cells.sort{ $0.value < $1.value }
-        return sorted[0]
+        return sort(cells)[0]
     }
 
     static func sumOfValues(cells: [Cell]) -> Int {

@@ -12,8 +12,6 @@ import Foundation
 ///
 class Walker {
     let matrix: BoundlessMatrix
-    
-    var stuff:[[Cell]] = [[]]
 
     var bestWalk: [Cell] = []
     var bestWalkSum: Int = 0

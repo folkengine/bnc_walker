@@ -32,15 +32,71 @@ class WalkerTests: XCTestCase {
 
     func testStartStepping_shortest() {
         protagonist.startStepping(Cartesian(x: 6, y: 1))
+
         XCTAssertEqual(protagonist.bestWalk, [Cell(column: 6, row: 1, value: 1)])
     }
 
-    func testStep() {
+    func testBestStep() {
         protagonist.startStepping(Cartesian(x: 1, y: 1))
 
         let walk = Walker.calculateWalk(protagonist.bestWalk)
+
         XCTAssertEqual(walk, [1, 2, 3, 4, 5, 1])
-        print(walk)
+    }
+
+    func test2ndBestStep() {
+        protagonist.startStepping(Cartesian(x: 1, y: 2))
+
+        let walk = Walker.calculateWalk(protagonist.bestWalk)
+
+        XCTAssertEqual(walk, [2, 2, 3, 4, 5, 1])
+    }
+
+    func test3ndBestStep() {
+        protagonist.startStepping(Cartesian(x: 1, y: 3))
+
+        let walk = Walker.calculateWalk(protagonist.bestWalk)
+
+        XCTAssertEqual(walk, [3, 2, 3, 4, 5, 1])
+    }
+
+    func test4thBestStep() {
+        protagonist.startStepping(Cartesian(x: 1, y: 4))
+
+        let walk = Walker.calculateWalk(protagonist.bestWalk)
+
+        XCTAssertEqual(walk, [4, 3, 3, 4, 5, 1])
+    }
+
+    func testWorstBestStep() {
+        protagonist.startStepping(Cartesian(x: 1, y: 5))
+
+        let walk = Walker.calculateWalk(protagonist.bestWalk)
+
+        XCTAssertEqual(walk, [5, 4, 3, 4, 5, 1])
+    }
+
+    func testWalkTall() {
+        protagonist.walkTall()
+
+        let walk = Walker.calculateWalk(protagonist.bestWalk)
+
+        XCTAssertEqual(walk, [1, 2, 3, 4, 5, 1])
+    }
+
+    func testWalkTall_inverse() {
+        let inverse_matrix: BoundlessMatrix = BoundlessMatrix.factory([
+                [5, 4, 3, 2, 1, 5],
+                [4, 3, 2, 1, 5, 4],
+                [3, 2, 1, 5, 4, 3],
+                [2, 1, 5, 4, 3, 2],
+                [1, 5, 4, 3, 2, 1]])
+        var walker = Walker(matrix: inverse_matrix)
+
+        walker.walkTall()
+        let walk = Walker.calculateWalk(walker.bestWalk)
+
+        XCTAssertEqual(walk, [5, 4, 3, 2, 1, 5])
     }
 
     func testAddBreadcrumb() {
@@ -57,6 +113,7 @@ class WalkerTests: XCTestCase {
     func testIsWorthyOfContinuing() {
         let best = Cell(column: 5, row: 4, value: 1)
         protagonist.addBreadcrumb(middlin)
+
         XCTAssertTrue(protagonist.hasBreadcrumb(middlin))
         XCTAssertFalse(protagonist.isWorthyOfContinuing(strong, trail: [strong]))
         XCTAssertTrue(protagonist.isWorthyOfContinuing(best, trail: [best]))

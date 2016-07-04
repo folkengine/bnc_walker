@@ -47,6 +47,10 @@ class BoundlessMatrix : CustomStringConvertible {
         return retrieveCell(Cartesian(x: xy.x + 1, y: row))
     }
 
+    func sortedStartingCells() -> [Cell] {
+        return Cell.sort(Array(1...self.rowsCount()).map( { (i) -> Cell in self.retrieveCell(Cartesian(x: 1, y: i)) }))
+    }
+
     var description: String {
         return matrix.map({row in row.map(String.init).joinWithSeparator(" ")}).joinWithSeparator(" \n")
     }

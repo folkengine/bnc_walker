@@ -68,9 +68,7 @@ class Walker {
 
     /// Walk through each starting Cell, going from lowest value to highest. 
     func walkTall() {
-        let startingCells = Array(1...matrix.rowsCount()).map( { (i) -> Cell in matrix.retrieveCell(Cartesian(x: 1, y: i)) })
-
-        for cell in Cell.sort(startingCells) {
+        for cell in matrix.sortedStartingCells() {
             startStepping(cell.toCartesian())
         }
     }

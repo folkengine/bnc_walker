@@ -8,48 +8,96 @@
 
 import Foundation
 
-/// The current "brute force" version of the class seems like a dead end, but maybe isn't.
+///
 ///
 class Walker {
     let matrix: BoundlessMatrix
-    
-    var stuff:[[Cell]] = [[]]
 
     var bestWalk: [Cell] = []
     var bestWalkSum: Int = 0
+    var breadcrumb: [Cartesian:Cell] = [:]
     
     init(matrix: BoundlessMatrix) {
         self.matrix = matrix
     }
 
     func submitCandidate(candidate: [Cell]) {
- 
-            let candidateSum = Cell.sumOfValues(candidate)
+        let candidateSum = Cell.sumOfValues(candidate)
 
-            if ((bestWalkSum == 0) || (candidateSum < bestWalkSum)) {
-                NSLog("New best walk: \(candidateSum) \(candidate) ")
-                bestWalk = candidate
-                bestWalkSum = candidateSum
-            }
-  
+        if ((bestWalkSum == 0) || (candidateSum < bestWalkSum)) {
+            NSLog("New best walk: \(candidateSum) \(Walker.calculateWalk(candidate)) ")
+            bestWalk = candidate
+            bestWalkSum = candidateSum
+        }
     }
-    
-    func step(xy: Cartesian, cells: [Cell]) {
+
+    func addBreadcrumb(cell: Cell) {
+        addBreadcrumb(cell, trail: [cell])
+    }
+
+    func addBreadcrumb(cell: Cell, trail: [Cell]) {
+        breadcrumb[cell.toCartesian()] = cell.toCartesian().toCell(Cell.sumOfValues(trail)) // 8-)
+    }
+
+    func hasBreadcrumb(xy: Cartesian) -> Bool {
+        return (breadcrumb[xy] != nil)
+    }
+
+    func hasBreadcrumb(cell: Cell) -> Bool {
+        return hasBreadcrumb(cell.toCartesian())
+    }
+
+    func isWorthyOfContinuing(cell: Cell, trail: [Cell]) -> Bool {
+        if (hasBreadcrumb(cell) && (breadcrumb[cell.toCartesian()]!.value <= Cell.sumOfValues(trail))) {
+            NSLog("Rejecting EX: \(breadcrumb[cell.toCartesian()]!.value) V: \(Cell.sumOfValues(trail)) \(trail)")
+            return false
+        }
+        addBreadcrumb(cell, trail: trail)
+        return true
+    }
+
+    func walkTall() {
+        var startingCells = Array(1...matrix.rowsCount()).map( { (i) -> Cell in matrix.retrieveCell(Cartesian(x: 1, y: i)) })
+
+        for cell in Cell.sort(startingCells) {
+            startStepping(cell.toCartesian())
+        }
+    }
+
+    func startStepping(xy: Cartesian) {
+        step(matrix.retrieveCell(xy), cells: [])
+    }
+
+    func step(cell: Cell, cells: [Cell]) {
         var candidate = cells
-        let currentCell = matrix.retrieveCell(xy)
-        candidate.append(currentCell)
-        if (matrix.isFinalColumm(xy)) {
+        candidate.append(cell)
+        if (matrix.isFinalColumn(cell.toCartesian())) {
             submitCandidate(candidate)
             return
         }
-        step(matrix.leftOfCell(xy).toCartesian(), cells: candidate)
-        step(matrix.centerOfCell(xy).toCartesian(), cells: candidate)
-        step(matrix.rightOfCell(xy).toCartesian(), cells: candidate)
-        
-        return
+
+        // TODO: Good candidates for a lambda
+        let left = matrix.leftOfCell(cell.toCartesian())
+        if (isWorthyOfContinuing(left, trail: candidate)) {
+            step(left, cells: candidate)
+        }
+
+        let center = matrix.centerOfCell(cell.toCartesian())
+        if (isWorthyOfContinuing(center, trail: candidate)) {
+            step(center, cells: candidate)
+        }
+
+        let right = matrix.rightOfCell(cell.toCartesian())
+        if (isWorthyOfContinuing(right, trail: candidate)) {
+            step(right, cells: candidate)
+        }
     }
     
     func pathOfLeastResistance() -> [Int] {
         return []
+    }
+
+    class func calculateWalk(trail: [Cell]) -> [Int] {
+        return trail.map({$0.row})
     }
 }

@@ -13,7 +13,7 @@ struct Cartesian: Hashable {
     let y: Int
 
     func toCell(value: Int) -> Cell {
-        return Cell(row: x, column: y, value: value)
+        return Cell(column: x, row: y, value: value)
     }
 
     var hashValue: Int {

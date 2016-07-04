@@ -14,26 +14,31 @@ import XCTest
 class CellTests: XCTestCase {
     
     func testCellEquality() {
-        XCTAssertTrue(Cell(row: 4, column: 5, value: 9) == Cell(row: 4, column: 5, value: 9))
-        XCTAssertFalse(Cell(row: 4, column: 5, value: 9) == Cell(row: 4, column: 5, value: 3))
+        XCTAssertTrue(Cell(column: 5, row: 4, value: 9) == Cell(column: 5, row: 4, value: 9))
+        XCTAssertFalse(Cell(column: 5, row: 4, value: 9) == Cell(column: 5, row: 4, value: 3))
     }
 
     func testToCartesian() {
-        XCTAssertEqual(Cell(row: 4, column: 5, value: 9).toCartesian(), Cartesian(x: 4, y: 5))
+        XCTAssertEqual(Cell(column: 5, row: 4, value: 9).toCartesian(), Cartesian(x: 5, y: 4))
     }
 
     func testMostPassive() {
-        let strong = Cell(row: 4, column: 5, value: 9)
-        let middlin = Cell(row: 4, column: 5, value: 3)
-        let weak = Cell(row: 4, column: 5, value: 1)
+        let strong = Cell(column: 5, row: 4, value: 9)
+        let middlin = Cell(column: 5, row: 4, value: 3)
+        let weak = Cell(column: 5, row: 4, value: 1)
         XCTAssertEqual(Cell.mostPassive([strong, weak, middlin]), weak)
     }
     
     func testSumOfValues() {
-        let strong = Cell(row: 4, column: 5, value: 9)
-        let middlin = Cell(row: 4, column: 5, value: 3)
-        let weak = Cell(row: 4, column: 5, value: 1)
+        let strong = Cell(column: 5, row: 4, value: 9)
+        let middlin = Cell(column: 5, row: 4, value: 3)
+        let weak = Cell(column: 5, row: 4, value: 1)
         XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin]), 13)
         XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin, weak]), 14)
+    }
+
+    func testHashValue() {
+        XCTAssertEqual(Cell(column: 5, row: 4, value: 9).hashValue, Cell(column: 5, row: 4, value: 9).hashValue)
+        XCTAssertNotEqual(Cell(column: 5, row: 4, value: 9).hashValue, Cell(column: 4, row: 5, value: 9).hashValue)
     }
 }

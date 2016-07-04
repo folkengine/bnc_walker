@@ -90,6 +90,7 @@ class WalkerTests: XCTestCase {
         let walker = Walker(matrix: inverse_matrix)
 
         XCTAssertEqual(walker.pathOfLeastResistance(), [5, 4, 3, 2, 1, 5])
+        print(walker.bestWalk)
     }
 
     func testAddBreadcrumb() {

@@ -29,6 +29,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "BnCWaterTests">
+               </Test>
+               <Test
                   Identifier = "BoundlessMatrixTests">
                </Test>
                <Test
@@ -38,7 +41,37 @@
                   Identifier = "CellTests">
                </Test>
                <Test
-                  Identifier = "WalkerTests">
+                  Identifier = "ResultTests">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/test2ndBestStep()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/test3ndBestStep()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/test4thBestStep()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testAddBreadcrumb()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testBestStep()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testCalculateWalk()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testIsWorthyOfContinuing()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testPathOfLeastResistance()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testStartStepping_shortest()">
+               </Test>
+               <Test
+                  Identifier = "WalkerTests/testWorstBestStep()">
                </Test>
             </SkippedTests>
          </TestableReference>

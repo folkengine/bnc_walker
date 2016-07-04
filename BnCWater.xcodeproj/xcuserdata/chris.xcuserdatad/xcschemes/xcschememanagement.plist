@@ -9,35 +9,35 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>All in CartesianTests.swift.xcscheme</key>
+		<key>All in BoundlessMatrixTests.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>All in BnCWaterTests.swift.xcscheme</key>
+		<key>-[WalkerTests testIsWorthyOfContinuing].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>All in BoundlessMatrixTests.swift.xcscheme</key>
+		<key>-[WalkerTests testWalkTall_inverse].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>-[WalkerTests testIsWorthyOfContinuing].xcscheme</key>
+		<key>-[WalkerTests testPathOfLeastResistance_inverse].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>-[WalkerTests testWalkTall_inverse].xcscheme</key>
+		<key>All in ResultTests.swift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

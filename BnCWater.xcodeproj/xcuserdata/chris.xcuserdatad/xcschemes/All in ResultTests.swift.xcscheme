@@ -35,6 +35,9 @@
                   Identifier = "BoundlessMatrixTests">
                </Test>
                <Test
+                  Identifier = "CartesianTests">
+               </Test>
+               <Test
                   Identifier = "CellTests">
                </Test>
                <Test

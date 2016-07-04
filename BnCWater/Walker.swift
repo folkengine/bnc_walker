@@ -8,8 +8,9 @@
 
 import Foundation
 
+/// Walks through a matrix, caching sums, and returning the path of lest resistance.
 ///
-///
+/// TODO: Add ceiling to resistance sum.
 class Walker {
     let matrix: BoundlessMatrix
 
@@ -19,6 +20,14 @@ class Walker {
     
     init(matrix: BoundlessMatrix) {
         self.matrix = matrix
+    }
+
+    /// Walk the walk. Then return the path of least resistance.
+    func pathOfLeastResistance() -> [Int] {
+        if (bestWalk == []) {
+            walkTall()
+        }
+        return Walker.calculateWalk(bestWalk)
     }
 
     func submitCandidate(candidate: [Cell]) {
@@ -47,6 +56,7 @@ class Walker {
         return hasBreadcrumb(cell.toCartesian())
     }
 
+    /// If the path's sum is lower than an existing path that hits the same Cell, continue, otherwise bail.
     func isWorthyOfContinuing(cell: Cell, trail: [Cell]) -> Bool {
         if (hasBreadcrumb(cell) && (breadcrumb[cell.toCartesian()]!.value <= Cell.sumOfValues(trail))) {
             NSLog("Rejecting EX: \(breadcrumb[cell.toCartesian()]!.value) V: \(Cell.sumOfValues(trail)) \(trail)")
@@ -56,8 +66,9 @@ class Walker {
         return true
     }
 
+    /// Walk through each starting Cell, going from lowest value to highest. 
     func walkTall() {
-        var startingCells = Array(1...matrix.rowsCount()).map( { (i) -> Cell in matrix.retrieveCell(Cartesian(x: 1, y: i)) })
+        let startingCells = Array(1...matrix.rowsCount()).map( { (i) -> Cell in matrix.retrieveCell(Cartesian(x: 1, y: i)) })
 
         for cell in Cell.sort(startingCells) {
             startStepping(cell.toCartesian())
@@ -68,6 +79,8 @@ class Walker {
         step(matrix.retrieveCell(xy), cells: [])
     }
 
+    /// Recursive function that goes through each Cell underneath it. When it gets to the end, submit its path
+    /// as a candidate for the best path.
     func step(cell: Cell, cells: [Cell]) {
         var candidate = cells
         candidate.append(cell)
@@ -91,10 +104,6 @@ class Walker {
         if (isWorthyOfContinuing(right, trail: candidate)) {
             step(right, cells: candidate)
         }
-    }
-    
-    func pathOfLeastResistance() -> [Int] {
-        return []
     }
 
     class func calculateWalk(trail: [Cell]) -> [Int] {

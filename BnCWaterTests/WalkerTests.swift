@@ -76,27 +76,20 @@ class WalkerTests: XCTestCase {
         XCTAssertEqual(walk, [5, 4, 3, 4, 5, 1])
     }
 
-    func testWalkTall() {
-        protagonist.walkTall()
-
-        let walk = Walker.calculateWalk(protagonist.bestWalk)
-
-        XCTAssertEqual(walk, [1, 2, 3, 4, 5, 1])
+    func testPathOfLeastResistance() {
+        XCTAssertEqual(protagonist.pathOfLeastResistance(), [1, 2, 3, 4, 5, 1])
     }
 
-    func testWalkTall_inverse() {
+    func testPathOfLeastResistance_inverse() {
         let inverse_matrix: BoundlessMatrix = BoundlessMatrix.factory([
                 [5, 4, 3, 2, 1, 5],
                 [4, 3, 2, 1, 5, 4],
                 [3, 2, 1, 5, 4, 3],
                 [2, 1, 5, 4, 3, 2],
                 [1, 5, 4, 3, 2, 1]])
-        var walker = Walker(matrix: inverse_matrix)
+        let walker = Walker(matrix: inverse_matrix)
 
-        walker.walkTall()
-        let walk = Walker.calculateWalk(walker.bestWalk)
-
-        XCTAssertEqual(walk, [5, 4, 3, 2, 1, 5])
+        XCTAssertEqual(walker.pathOfLeastResistance(), [5, 4, 3, 2, 1, 5])
     }
 
     func testAddBreadcrumb() {

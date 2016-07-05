@@ -61,9 +61,9 @@ class BoundlessMatrix : CustomStringConvertible {
     
     /// Static factory method generating a instance with random values
     class func factory(dimensions: Cartesian) -> BoundlessMatrix {
-        var arr = Array(count: dimensions.x, repeatedValue: Array(count: dimensions.y, repeatedValue: 0))
-        for i in 0...(dimensions.x - 1) {
-            arr[i] = (0...dimensions.y).map{_ in Int(arc4random_uniform(8) + 1)}
+        var arr = Array(count: dimensions.y, repeatedValue: Array(count: dimensions.x, repeatedValue: 0))
+        for i in 0...(dimensions.y - 1) {
+            arr[i] = (0...dimensions.x).map{_ in Int(arc4random_uniform(8) + 1)}
         }
         return BoundlessMatrix(matrix: arr)
     }

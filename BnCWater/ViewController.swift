@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     let resistance: Int = 50
     
     @IBAction func begin(sender : AnyObject) {
-        let matrix: BoundlessMatrix = BoundlessMatrix.factory(Cartesian(x:6, y: 5))
+        let matrix: BoundlessMatrix = BoundlessMatrix.factory(Cartesian(x:8, y: 5))
         let walker = Walker(matrix: matrix)
         walker.walkTall()
         let result = Result(threshold: resistance, path: walker.bestWalk)
@@ -33,10 +33,14 @@ class ViewController: UIViewController {
 
         pathTextField.text = "\(walk)"
         
+        matrixTextField.textAlignment = NSTextAlignment.Center
+    
     }
 
     override func viewDidLoad() {
         styleActionButton()
+        
+        
         
         super.viewDidLoad()
     }
@@ -51,6 +55,14 @@ class ViewController: UIViewController {
         actionButton.layer.cornerRadius = 5
         actionButton.layer.borderWidth = 1
         actionButton.layer.borderColor = UIColor.blackColor().CGColor
+    }
+    
+    func centerText() {
+        
+        var topCorrect : CGFloat = (matrixTextField.frame.height - matrixTextField.contentSize.height);
+        topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect / 2
+        matrixTextField.contentOffset = CGPoint(x: 0, y: -topCorrect)
+        
     }
     
 }

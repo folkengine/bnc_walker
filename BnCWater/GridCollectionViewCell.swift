@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// TODO Work in progress for refactoring of Grid layout
 class GridCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var myLabel: UILabel!
 }

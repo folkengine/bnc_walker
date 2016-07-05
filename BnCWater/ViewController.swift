@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet var successfulTextField : UITextField!
     @IBOutlet var sumTextField : UITextField!
     @IBOutlet var pathTextField : UITextField!
+    @IBOutlet var actionButton : UIButton!
 
     let resistance: Int = 50
     
@@ -35,8 +36,9 @@ class ViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        styleActionButton()
+        
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +46,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func styleActionButton() {
+        actionButton.backgroundColor = UIColor.darkGrayColor()
+        actionButton.layer.cornerRadius = 5
+        actionButton.layer.borderWidth = 1
+        actionButton.layer.borderColor = UIColor.blackColor().CGColor
+    }
+    
 }
 

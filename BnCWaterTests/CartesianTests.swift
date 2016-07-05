@@ -16,7 +16,7 @@ class CartesianTests: XCTestCase {
     }
 
     func testToCell() {
-        XCTAssertEqual(Cartesian(x: 2, y: 1).toCell(3), Cell(column: 1, row: 2, value: 3))
+        XCTAssertEqual(Cartesian(x: 2, y: 1).toCell(3), Cell(column: 2, row: 1, value: 3))
     }
 
     func testHashValue() {

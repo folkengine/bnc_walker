@@ -15,7 +15,6 @@
 		83183E871D21CA7B00A44C1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83183E851D21CA7B00A44C1E /* Main.storyboard */; };
 		83183E891D21CA7B00A44C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83183E881D21CA7B00A44C1E /* Assets.xcassets */; };
 		83183E8C1D21CA7B00A44C1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83183E8A1D21CA7B00A44C1E /* LaunchScreen.storyboard */; };
-		83183E971D21CA7B00A44C1E /* BnCWaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183E961D21CA7B00A44C1E /* BnCWaterTests.swift */; };
 		83183EA21D21CA7B00A44C1E /* BnCWaterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83183EA11D21CA7B00A44C1E /* BnCWaterUITests.swift */; };
 		8371F3011D268B6700EA457C /* Walker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3001D268B6700EA457C /* Walker.swift */; };
 		8371F3031D268E6000EA457C /* WalkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8371F3021D268E6000EA457C /* WalkerTests.swift */; };
@@ -57,7 +56,6 @@
 		83183E8B1D21CA7B00A44C1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83183E8D1D21CA7B00A44C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83183E921D21CA7B00A44C1E /* BnCWaterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BnCWaterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		83183E961D21CA7B00A44C1E /* BnCWaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BnCWaterTests.swift; sourceTree = "<group>"; };
 		83183E981D21CA7B00A44C1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83183E9D1D21CA7B00A44C1E /* BnCWaterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BnCWaterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83183EA11D21CA7B00A44C1E /* BnCWaterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BnCWaterUITests.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 		83183E951D21CA7B00A44C1E /* BnCWaterTests */ = {
 			isa = PBXGroup;
 			children = (
-				83183E961D21CA7B00A44C1E /* BnCWaterTests.swift */,
 				83183E981D21CA7B00A44C1E /* Info.plist */,
 				83B478521D2401F000569CF7 /* BoundlessMatrixTests.swift */,
 				8371F3021D268E6000EA457C /* WalkerTests.swift */,
@@ -309,7 +306,6 @@
 				83B478531D2401F000569CF7 /* BoundlessMatrixTests.swift in Sources */,
 				8371F3071D26B5FF00EA457C /* CellTests.swift in Sources */,
 				8371F3031D268E6000EA457C /* WalkerTests.swift in Sources */,
-				83183E971D21CA7B00A44C1E /* BnCWaterTests.swift in Sources */,
 				5A41697563B5E0B7E1EC0998 /* ResultTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

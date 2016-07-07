@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func begin(sender : AnyObject) {
-        matrix = BoundlessMatrix.factory(Cartesian(x:8, y: 5))
+        matrix = BoundlessMatrix.factory(Cartesian(x:6, y: 100))
         processMatrix()
     }
     

@@ -113,6 +113,10 @@ class WalkerTests: XCTestCase {
         XCTAssertTrue(protagonist.isWorthyOfContinuing(best, trail: [best]))
         XCTAssertEqual(protagonist.breadcrumb[best.toCartesian()]!.value, 1)
     }
+    
+    func testMaxGrid() {
+        let matrix: BoundlessMatrix = BoundlessMatrix.factory(Cartesian(x:100, y: 10))
+    }
 
     func testCalculateWalk() {
         XCTAssertEqual(

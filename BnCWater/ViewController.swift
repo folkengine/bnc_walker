@@ -10,44 +10,54 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var matrixTextField : UITextView!
-    @IBOutlet var successfulTextField : UITextField!
-    @IBOutlet var sumTextField : UITextField!
-    @IBOutlet var pathTextField : UITextField!
-    @IBOutlet var actionButton : UIButton!
+    @IBOutlet var matrixTextField: UITextView!
+    @IBOutlet var successfulTextField: UITextField!
+    @IBOutlet var sumTextField: UITextField!
+    @IBOutlet var pathTextField: UITextField!
+    @IBOutlet var actionButton: UIButton!
+    
+    @IBOutlet var resistanceSlider: UISlider!
+    @IBOutlet var resistanceLevel: UITextField!
 
-    let resistance: Int = 50
+    var resistance: Int = 50
+    var matrix: BoundlessMatrix!
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        resistance = Int(sender.value)
+        resistanceLevel.text = "\(resistance)"
+        processMatrix()
+    }
     
     @IBAction func begin(sender : AnyObject) {
-        let matrix: BoundlessMatrix = BoundlessMatrix.factory(Cartesian(x:8, y: 5))
+        matrix = BoundlessMatrix.factory(Cartesian(x:8, y: 5))
+        processMatrix()
+    }
+    
+    func processMatrix() {
         let walker = Walker(matrix: matrix)
         walker.walkTall()
         let result = Result(threshold: resistance, path: walker.bestWalk)
-
+        
         NSLog("\(result)")
         
         matrixTextField.text = matrix.description
         successfulTextField.text = result.successful ? "Yes" : "No"
         sumTextField.text = String(result.sum)
-        let walk: String = Walker.calculateWalk(result.completed).map({String($0)}).joinWithSeparator(" ")
-
+        let walk: String = Walker.calculateWalk(result.completed).map({String($0)}).joinWithSeparator("\t")
+        
         pathTextField.text = "\(walk)"
+        resistanceLevel.text = "\(resistance)"
         
         matrixTextField.textAlignment = NSTextAlignment.Center
-    
     }
 
     override func viewDidLoad() {
         styleActionButton()
-        
-        
-        
         super.viewDidLoad()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func styleActionButton() {
@@ -58,12 +68,8 @@ class ViewController: UIViewController {
     }
     
     func centerText() {
-        
         var topCorrect : CGFloat = (matrixTextField.frame.height - matrixTextField.contentSize.height);
         topCorrect = topCorrect < 0.0 ? 0.0 : topCorrect / 2
         matrixTextField.contentOffset = CGPoint(x: 0, y: -topCorrect)
-        
     }
-    
 }
-

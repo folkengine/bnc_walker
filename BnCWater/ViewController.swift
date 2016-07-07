@@ -10,13 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet var matrixTextField : UITextView!
-    @IBOutlet var successfulTextField : UITextField!
-    @IBOutlet var sumTextField : UITextField!
-    @IBOutlet var pathTextField : UITextField!
-    @IBOutlet var actionButton : UIButton!
+    @IBOutlet var matrixTextField: UITextView!
+    @IBOutlet var successfulTextField: UITextField!
+    @IBOutlet var sumTextField: UITextField!
+    @IBOutlet var pathTextField: UITextField!
+    @IBOutlet var actionButton: UIButton!
+    
+    @IBOutlet var resistanceSlider: UISlider!
+    @IBOutlet var resistanceLevel: UITextField!
 
     let resistance: Int = 50
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        let currentValue = Int(sender.value)
+        resistanceLevel.text = "\(currentValue)"
+    }
     
     @IBAction func begin(sender : AnyObject) {
         let matrix: BoundlessMatrix = BoundlessMatrix.factory(Cartesian(x:8, y: 5))
@@ -29,7 +37,7 @@ class ViewController: UIViewController {
         matrixTextField.text = matrix.description
         successfulTextField.text = result.successful ? "Yes" : "No"
         sumTextField.text = String(result.sum)
-        let walk: String = Walker.calculateWalk(result.completed).map({String($0)}).joinWithSeparator(" ")
+        let walk: String = Walker.calculateWalk(result.completed).map({String($0)}).joinWithSeparator("\t")
 
         pathTextField.text = "\(walk)"
         

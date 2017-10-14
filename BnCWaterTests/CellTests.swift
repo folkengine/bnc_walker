@@ -26,15 +26,15 @@ class CellTests: XCTestCase {
         let strong = Cell(column: 5, row: 4, value: 9)
         let middlin = Cell(column: 5, row: 4, value: 3)
         let weak = Cell(column: 5, row: 4, value: 1)
-        XCTAssertEqual(Cell.mostPassive([strong, weak, middlin]), weak)
+        XCTAssertEqual(Cell.mostPassive(cells: [strong, weak, middlin]), weak)
     }
     
     func testSumOfValues() {
         let strong = Cell(column: 5, row: 4, value: 9)
         let middlin = Cell(column: 5, row: 4, value: 3)
         let weak = Cell(column: 5, row: 4, value: 1)
-        XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin]), 13)
-        XCTAssertEqual(Cell.sumOfValues([strong, weak, middlin, weak]), 14)
+        XCTAssertEqual(Cell.sumOfValues(cells: [strong, weak, middlin]), 13)
+        XCTAssertEqual(Cell.sumOfValues(cells: [strong, weak, middlin, weak]), 14)
     }
 
     func testHashValue() {

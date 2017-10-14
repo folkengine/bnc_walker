@@ -15,7 +15,7 @@ class WalkerTests: XCTestCase {
 
     var protagonist: Walker!
 
-    let matrix: BoundlessMatrix = BoundlessMatrix.factory([
+    let matrix: BoundlessMatrix = BoundlessMatrix.factory(matrix: [
             [1, 5, 4, 3, 2, 1],
             [2, 1, 5, 4, 3, 2],
             [3, 2, 1, 5, 4, 3],
@@ -31,47 +31,47 @@ class WalkerTests: XCTestCase {
     }
 
     func testStartStepping_shortest() {
-        protagonist.startStepping(Cartesian(x: 6, y: 1))
+        protagonist.startStepping(xy: Cartesian(x: 6, y: 1))
 
         XCTAssertEqual(protagonist.bestWalk, [Cell(column: 6, row: 1, value: 1)])
     }
 
     func testBestStep() {
-        protagonist.startStepping(Cartesian(x: 1, y: 1))
+        protagonist.startStepping(xy: Cartesian(x: 1, y: 1))
 
-        let walk = Walker.calculateWalk(protagonist.bestWalk)
+        let walk = Walker.calculateWalk(trail: protagonist.bestWalk)
 
         XCTAssertEqual(walk, [1, 2, 3, 4, 5, 1])
     }
 
     func test2ndBestStep() {
-        protagonist.startStepping(Cartesian(x: 1, y: 2))
+        protagonist.startStepping(xy: Cartesian(x: 1, y: 2))
 
-        let walk = Walker.calculateWalk(protagonist.bestWalk)
+        let walk = Walker.calculateWalk(trail: protagonist.bestWalk)
 
         XCTAssertEqual(walk, [2, 2, 3, 4, 5, 1])
     }
 
     func test3ndBestStep() {
-        protagonist.startStepping(Cartesian(x: 1, y: 3))
+        protagonist.startStepping(xy: Cartesian(x: 1, y: 3))
 
-        let walk = Walker.calculateWalk(protagonist.bestWalk)
+        let walk = Walker.calculateWalk(trail: protagonist.bestWalk)
 
         XCTAssertEqual(walk, [3, 2, 3, 4, 5, 1])
     }
 
     func test4thBestStep() {
-        protagonist.startStepping(Cartesian(x: 1, y: 4))
+        protagonist.startStepping(xy: Cartesian(x: 1, y: 4))
 
-        let walk = Walker.calculateWalk(protagonist.bestWalk)
+        let walk = Walker.calculateWalk(trail: protagonist.bestWalk)
 
         XCTAssertEqual(walk, [4, 3, 3, 4, 5, 1])
     }
 
     func testWorstBestStep() {
-        protagonist.startStepping(Cartesian(x: 1, y: 5))
+        protagonist.startStepping(xy: Cartesian(x: 1, y: 5))
 
-        let walk = Walker.calculateWalk(protagonist.bestWalk)
+        let walk = Walker.calculateWalk(trail: protagonist.bestWalk)
 
         XCTAssertEqual(walk, [5, 4, 3, 4, 5, 1])
     }
@@ -81,7 +81,7 @@ class WalkerTests: XCTestCase {
     }
 
     func testPathOfLeastResistance_inverse() {
-        let inverse_matrix: BoundlessMatrix = BoundlessMatrix.factory([
+        let inverse_matrix: BoundlessMatrix = BoundlessMatrix.factory(matrix: [
                 [5, 4, 3, 2, 1, 5],
                 [4, 3, 2, 1, 5, 4],
                 [3, 2, 1, 5, 4, 3],
@@ -94,29 +94,29 @@ class WalkerTests: XCTestCase {
     }
 
     func testAddBreadcrumb() {
-        protagonist.addBreadcrumb(strong)
+        protagonist.addBreadcrumb(cell: strong)
 
-        XCTAssertTrue(protagonist.hasBreadcrumb(middlin))
-        XCTAssertTrue(protagonist.hasBreadcrumb(middlin.toCartesian()))
-        XCTAssertFalse(protagonist.hasBreadcrumb(weak))
+        XCTAssertTrue(protagonist.hasBreadcrumb(cell: middlin))
+        XCTAssertTrue(protagonist.hasBreadcrumb(xy: middlin.toCartesian()))
+        XCTAssertFalse(protagonist.hasBreadcrumb(cell: weak))
 
-        protagonist.addBreadcrumb(weak)
-        XCTAssertTrue(protagonist.hasBreadcrumb(weak.toCartesian()))
+        protagonist.addBreadcrumb(cell: weak)
+        XCTAssertTrue(protagonist.hasBreadcrumb(xy: weak.toCartesian()))
     }
 
     func testIsWorthyOfContinuing() {
         let best = Cell(column: 5, row: 4, value: 1)
-        protagonist.addBreadcrumb(middlin)
+        protagonist.addBreadcrumb(cell: middlin)
 
-        XCTAssertTrue(protagonist.hasBreadcrumb(middlin))
-        XCTAssertFalse(protagonist.isWorthyOfContinuing(strong, trail: [strong]))
-        XCTAssertTrue(protagonist.isWorthyOfContinuing(best, trail: [best]))
+        XCTAssertTrue(protagonist.hasBreadcrumb(cell: middlin))
+        XCTAssertFalse(protagonist.isWorthyOfContinuing(cell: strong, trail: [strong]))
+        XCTAssertTrue(protagonist.isWorthyOfContinuing(cell: best, trail: [best]))
         XCTAssertEqual(protagonist.breadcrumb[best.toCartesian()]!.value, 1)
     }
 
     func testCalculateWalk() {
         XCTAssertEqual(
-                Walker.calculateWalk([
+            Walker.calculateWalk(trail: [
                         Cell(column: 1, row: 1, value: 1),
                         Cell(column: 2, row: 2, value: 1),
                         Cell(column: 3, row: 3, value: 1)]),

@@ -27,25 +27,25 @@ class Walker {
         if (bestWalk == []) {
             walkTall()
         }
-        return Walker.calculateWalk(bestWalk)
+        return Walker.calculateWalk(trail: bestWalk)
     }
 
     func submitCandidate(candidate: [Cell]) {
-        let candidateSum = Cell.sumOfValues(candidate)
+        let candidateSum = Cell.sumOfValues(cells: candidate)
 
         if ((bestWalkSum == 0) || (candidateSum < bestWalkSum)) {
-            NSLog("New best walk: \(candidateSum) \(Walker.calculateWalk(candidate)) ")
+            NSLog("New best walk: \(candidateSum) \(Walker.calculateWalk(trail: candidate)) ")
             bestWalk = candidate
             bestWalkSum = candidateSum
         }
     }
 
     func addBreadcrumb(cell: Cell) {
-        addBreadcrumb(cell, trail: [cell])
+        addBreadcrumb(cell: cell, trail: [cell])
     }
 
     func addBreadcrumb(cell: Cell, trail: [Cell]) {
-        breadcrumb[cell.toCartesian()] = cell.toCartesian().toCell(Cell.sumOfValues(trail)) // 8-)
+        breadcrumb[cell.toCartesian()] = cell.toCartesian().toCell(value: Cell.sumOfValues(cells: trail)) // 8-)
     }
 
     func hasBreadcrumb(xy: Cartesian) -> Bool {
@@ -53,28 +53,28 @@ class Walker {
     }
 
     func hasBreadcrumb(cell: Cell) -> Bool {
-        return hasBreadcrumb(cell.toCartesian())
+        return hasBreadcrumb(xy: cell.toCartesian())
     }
 
     /// If the path's sum is lower than an existing path that hits the same Cell, continue, otherwise bail.
     func isWorthyOfContinuing(cell: Cell, trail: [Cell]) -> Bool {
-        if (hasBreadcrumb(cell) && (breadcrumb[cell.toCartesian()]!.value <= Cell.sumOfValues(trail))) {
-            NSLog("Rejecting EX: \(breadcrumb[cell.toCartesian()]!.value) V: \(Cell.sumOfValues(trail)) \(trail)")
+        if (hasBreadcrumb(cell: cell) && (breadcrumb[cell.toCartesian()]!.value <= Cell.sumOfValues(cells: trail))) {
+            NSLog("Rejecting EX: \(breadcrumb[cell.toCartesian()]!.value) V: \(Cell.sumOfValues(cells: trail)) \(trail)")
             return false
         }
-        addBreadcrumb(cell, trail: trail)
+        addBreadcrumb(cell: cell, trail: trail)
         return true
     }
 
     /// Walk through each starting Cell, going from lowest value to highest. 
     func walkTall() {
         for cell in matrix.sortedStartingCells() {
-            startStepping(cell.toCartesian())
+            startStepping(xy: cell.toCartesian())
         }
     }
 
     func startStepping(xy: Cartesian) {
-        step(matrix.retrieveCell(xy), cells: [])
+        step(cell: matrix.retrieveCell(xy: xy), cells: [])
     }
 
     /// Recursive function that goes through each Cell underneath it. When it gets to the end, submit its path
@@ -82,25 +82,25 @@ class Walker {
     func step(cell: Cell, cells: [Cell]) {
         var candidate = cells
         candidate.append(cell)
-        if (matrix.isFinalColumn(cell.toCartesian())) {
-            submitCandidate(candidate)
+        if (matrix.isFinalColumn(xy: cell.toCartesian())) {
+            submitCandidate(candidate: candidate)
             return
         }
 
         // TODO: Good candidates for a lambda
-        let left = matrix.leftOfCell(cell.toCartesian())
-        if (isWorthyOfContinuing(left, trail: candidate)) {
-            step(left, cells: candidate)
+        let left = matrix.leftOfCell(xy: cell.toCartesian())
+        if (isWorthyOfContinuing(cell: left, trail: candidate)) {
+            step(cell: left, cells: candidate)
         }
 
-        let center = matrix.centerOfCell(cell.toCartesian())
-        if (isWorthyOfContinuing(center, trail: candidate)) {
-            step(center, cells: candidate)
+        let center = matrix.centerOfCell(xy:cell.toCartesian())
+        if (isWorthyOfContinuing(cell: center, trail: candidate)) {
+            step(cell: center, cells: candidate)
         }
 
-        let right = matrix.rightOfCell(cell.toCartesian())
-        if (isWorthyOfContinuing(right, trail: candidate)) {
-            step(right, cells: candidate)
+        let right = matrix.rightOfCell(xy: cell.toCartesian())
+        if (isWorthyOfContinuing(cell: right, trail: candidate)) {
+            step(cell: right, cells: candidate)
         }
     }
 

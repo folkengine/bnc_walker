@@ -29,7 +29,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func begin(sender : AnyObject) {
-        matrix = BoundlessMatrix.factory(Cartesian(x:8, y: 5))
+        let cart = Cartesian(x:8, y: 5)
+        matrix = BoundlessMatrix.factory(dimensions: cart)
         processMatrix()
     }
     
@@ -43,12 +44,12 @@ class ViewController: UIViewController {
         matrixTextField.text = matrix.description
         successfulTextField.text = result.successful ? "Yes" : "No"
         sumTextField.text = String(result.sum)
-        let walk: String = Walker.calculateWalk(result.completed).map({String($0)}).joinWithSeparator("\t")
+        let walk: String = Walker.calculateWalk(trail: result.completed).map({String($0)}).joined(separator: "\t")
         
         pathTextField.text = "\(walk)"
         resistanceLevel.text = "\(resistance)"
         
-        matrixTextField.textAlignment = NSTextAlignment.Center
+        matrixTextField.textAlignment = NSTextAlignment.center
     }
 
     override func viewDidLoad() {
@@ -61,10 +62,10 @@ class ViewController: UIViewController {
     }
 
     func styleActionButton() {
-        actionButton.backgroundColor = UIColor.darkGrayColor()
+        actionButton.backgroundColor = UIColor.darkGray
         actionButton.layer.cornerRadius = 5
         actionButton.layer.borderWidth = 1
-        actionButton.layer.borderColor = UIColor.blackColor().CGColor
+        actionButton.layer.borderColor = UIColor.black.cgColor
     }
     
     func centerText() {

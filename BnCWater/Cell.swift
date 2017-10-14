@@ -15,15 +15,15 @@ struct Cell: Hashable {
     }
 
     static func sort(cells: [Cell]) -> [Cell] {
-        return cells.sort{ $0.value < $1.value }
+        return cells.sorted{ $0.value < $1.value }
     }
 
     static func mostPassive(cells: [Cell]) -> Cell {
-        return sort(cells)[0]
+        return sort(cells: cells)[0]
     }
 
     static func sumOfValues(cells: [Cell]) -> Int {
-        return cells.reduce(0, combine: {$0 + $1.value})
+        return cells.reduce(0, {$0 + $1.value})
     }
 
     var hashValue: Int {

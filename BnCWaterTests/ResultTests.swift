@@ -10,7 +10,7 @@ import XCTest
 
 class ResultTests : XCTestCase {
 
-    let matrix: BoundlessMatrix = BoundlessMatrix.factory([
+    let matrix: BoundlessMatrix = BoundlessMatrix.factory(matrix: [
             [5, 4, 3, 2, 1, 5],
             [4, 3, 2, 1, 5, 4],
             [3, 2, 1, 5, 4, 3],

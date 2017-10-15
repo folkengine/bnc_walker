@@ -2,12 +2,12 @@
 
 Implementation of the Path of Least Resistance Kata.
 
-This code is written for iOS 9.3 on XCode 7.3.1.
+This code is written for iOS 11.0 with Swift 4 on XCode 9.0.
 
 # Running the App
 
-* Double click BnCWater.xcodeproj to Open the Project in XCode. (Tested only on XCode 7.3.1) 
-* Select an iOS SDK 9.3 compatible simulator.
+* Double click BnCWater.xcodeproj to Open the Project in XCode. (Tested only on XCode 11.0) 
+* Select an iOS SDK 11 compatible simulator.
 * Click the Build and Run button on XCode.
 
 # Testing

@@ -17,7 +17,7 @@ class BoundlessMatrix : CustomStringConvertible {
     }
 
     func retrieveCell(xy: Cartesian) -> Cell {
-        return xy.toCell(matrix[xy.y - 1][xy.x - 1])
+        return xy.toCell(value: matrix[xy.y - 1][xy.x - 1])
     }
 
     func columnsCount() -> Int {
@@ -34,25 +34,25 @@ class BoundlessMatrix : CustomStringConvertible {
 
     func leftOfCell(xy: Cartesian) -> Cell {
         let row = xy.y == 1 ? rowsCount() : xy.y - 1
-        return retrieveCell(Cartesian(x: xy.x + 1, y: row))
+        return retrieveCell(xy: Cartesian(x: xy.x + 1, y: row))
     }
 
     func centerOfCell(xy: Cartesian) -> Cell {
-        return retrieveCell(Cartesian(x: xy.x + 1, y: xy.y))
+        return retrieveCell(xy: Cartesian(x: xy.x + 1, y: xy.y))
     }
 
 
     func rightOfCell(xy: Cartesian) -> Cell {
         let row = xy.y == rowsCount() ? 1 : xy.y + 1
-        return retrieveCell(Cartesian(x: xy.x + 1, y: row))
+        return retrieveCell(xy: Cartesian(x: xy.x + 1, y: row))
     }
 
     func sortedStartingCells() -> [Cell] {
-        return Cell.sort(Array(1...self.rowsCount()).map( { (i) -> Cell in self.retrieveCell(Cartesian(x: 1, y: i)) }))
+        return Cell.sort(cells: Array(1...self.rowsCount()).map( { (i) -> Cell in self.retrieveCell(xy: Cartesian(x: 1, y: i)) }))
     }
 
     var description: String {
-        return matrix.map({row in row.map(String.init).joinWithSeparator(" ")}).joinWithSeparator(" \n")
+        return matrix.map({row in row.map(String.init).joined(separator: " ")}).joined(separator: " \n")
     }
 
     class func factory(matrix: [[Int]]) -> BoundlessMatrix {
@@ -61,7 +61,7 @@ class BoundlessMatrix : CustomStringConvertible {
     
     /// Static factory method generating a instance with random values
     class func factory(dimensions: Cartesian) -> BoundlessMatrix {
-        var arr = Array(count: dimensions.y, repeatedValue: Array(count: dimensions.x, repeatedValue: 0))
+        var arr = Array(repeating: Array(repeating: 0, count: dimensions.x), count: dimensions.y)
         for i in 0...(dimensions.y - 1) {
             arr[i] = (0...dimensions.x).map{_ in Int(arc4random_uniform(8) + 1)}
         }

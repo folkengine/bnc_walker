@@ -27,6 +27,6 @@ struct Result {
     }
 
     var successful: Bool {
-        return Cell.sumOfValues(path) <= threshold
+        return Cell.sumOfValues(cells: path) <= threshold
     }
 }
